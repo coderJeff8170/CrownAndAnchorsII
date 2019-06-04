@@ -1,0 +1,27 @@
+.titleText {
+    font: bold 36px Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.mat {
+    padding-top: 20px;
+    position: relative;
+
+    background-color: rgb(253, 240, 216);
+    display: inline-block;
+    width: 640px;
+    height: 430px;
+}
+
+.square {
+    height: 200px;
+    width: 200px;
+}
+
+img:hover {
+    opacity: .5;
+}
