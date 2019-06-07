@@ -26,19 +26,21 @@ function placeBet() {
 //corresponding with the amount on the square.
 
 function rollDie() {
-    let roundPoints = 0;
     for(i=1; i<4; i++){
         let roll = (Math.floor(Math.random() * 6));
         document.getElementById(`die${[i]}`).src = `assets/${dieArray[roll]}`;
-        for(b=0; b<betArray.length; b++) {
-            if(betArray[b]>0 && b === roll) {
-                roundPoints = roundPoints + betArray[b];
-                }
-            
-        }
+        rollArray.push(roll);//great! now we have an array of die face values.
     }
-    console.log(`you won ${roundPoints} points this round`);
-    points = points + roundPoints;
-    console.log(`you now have ${points} points!`);
-    document.getElementsByClassName("wager").value = "0";
+
+    for(i=0; i<betArray.length; i++) {
+
+        console.log(betArray[i]);
+
+        if(betArray[i]>0 && (i === rollArray[0] || i === rollArray[1] || i === rollArray[2])) {
+            console.log('yay!');
+            points = points + betArray[i];
+            //return points;
+            }
+    }
+    console.log(`you won ${points}!`);
 }

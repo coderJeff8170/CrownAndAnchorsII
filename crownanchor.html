@@ -10,17 +10,46 @@
     <h1 class='titleText'>Crown &amp; Anchors</h1>
     <div class="container">
         <div class="mat">
-            <img class="square" src="assets/heart.gif">
+            <div class="square">
+                <input class="wager" id="heart" type='number' value="0">
+                <img class="face" src="assets/heart.gif">
+            </div>
+            <div class="square">
+                    <input class="wager"  id="crown" type='number' value="0">
+                    <img class="face" src="assets/crown.gif">
+            </div>
+            <div class="square">
+                    <input class="wager" id="diamond" type='number' value="0">
+                    <img class="face" src="assets/diamond.gif">
+            </div>
+            <div class="square">
+                    <img class="face" src="assets/spade.gif">
+                    <input class="wager" id="spade" type='number' value="0">
+            </div>
+            <div class="square">
+                    <img class="face" src="assets/anchor.gif">
+                    <input class="wager" id="anchor" type='number' value="0">
+            </div>
+            <div class="square">
+                    <img class="face" src="assets/club.gif">
+                    <input class="wager" id="club" type='number' value="0">
+            </div>
+        </div>
+        <div class="bet">
+                <button onclick="placeBet()">Place Bet!</button>
         </div>
         <div class="dice">
-            <img id="die" src="assets/crowndie.png">
-            <img id="die" src="assets/crowndie.png">
-            <img id="die" src="assets/crowndie.png">
+            <img class="die" id="die1" src="assets/crowndie.png">
+            <img class="die" id="die2" src="assets/crowndie.png">
+            <img class="die" id="die3" src="assets/crowndie.png">
         </div>
         <div class="roll">
             <button onclick="rollDie()">Roll the Dice!</button>
         </div>
     </div>
+    <audio src="the-sailors-hornpipe.mp3" controls loop="true" autoplay="true">
+            Error: your web browser does not support this audio player.
+    </audio>
     <script src="crownanchor.js"></script>
 </body>
 </html>
