@@ -1,11 +1,10 @@
 //this isn't going to be very DRY... baby steps, write it first, revise it later
 
-let points = 0;
+//start with 50 coins;
+let purseCoins = 50;
 const dieArray = ['heartdie.png','crowndie.png','diamonddie.png','spadedie.png','anchordie.png','clubdie.png'];
 let rollArray = [];
 let betArray = [];
-//corresponding bet array?
-//const betArray = ['heart','crown','diamond','spade','anchor','club'];
 let betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
 
 
@@ -17,10 +16,37 @@ function placeBet() {
         betObject.anchor = document.getElementById('anchor').valueAsNumber;
         betObject.club = document.getElementById('club').valueAsNumber;
         betArray = Object.values(betObject);
-     
+
+        for(i=0; i<betArray.length; i++) {
+            if(betArray[i]<0){
+                betArray[i] = 0;
+            }
+        }
+
         console.log(betArray);//yay!
+        console.log(purseCoins);
+
+        //total up the array of bets
+        let currentWager = betArray.reduce((a, x) => a += x);
+        //subtract current wager from the purse
+        purseCoins = purseCoins - currentWager;
+        //if current wager is more than whats in the purse, prevent.
+        //suggest preventing increment values if the purse is empty, in real time...
+        if(purseCoins < 0) {
+            //alert(`you don't have enough coins to place this bet!`);
+            console.log(`${purseCoins} <should be less than 0`);
+            purseCoins = purseCoins + currentWager;
+            console.log(`${purseCoins} <should be back to 50`);
+            return;
+        //if current wager empties purse, let them know the purse is empty.
+         }/*else if(purseCoins=0) {
+            alert(`your purse is empty!`);
+        }else{
+            alert(`you now have ${purseCoins} coins in your purse`);
+        } */
 
         }
+        
 
 //if there's a bet placed on a square, and that square corresponds with any of the die, multiply the number of die
 //corresponding with the amount on the square.
@@ -34,11 +60,11 @@ function rollDie() {
             if(betArray[b]>0 && b === roll) {
                 roundPoints = roundPoints + betArray[b];
                 }
-            
         }
     }
     console.log(`you won ${roundPoints} points this round`);
-    points = points + roundPoints;
-    console.log(`you now have ${points} points!`);
+    purseCoins = purseCoins + roundPoints;
+    console.log(`you now have ${purseCoins} coins in your purse!`);
     document.getElementsByClassName("wager").value = "0";
+    console.log(betArray);
 }

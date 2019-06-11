@@ -2,9 +2,28 @@ body {
     background-color: rgb(0, 139, 120);
 }
 
+header {
+    text-align: center;
+    min-width: 730px;
+}
+
+#playerName {
+    padding: 0 30 0 30;
+    text-align: left;
+    display: inline;
+}
+#Score {
+    padding: 0 30 0 30;
+    text-align: right;
+    display: inline;
+}
+
 .titleText {
+    padding: 0 30 0 30;
     font: bold 48px Arial, Helvetica, sans-serif;
     text-align: center;
+
+    display: inline;
 }
 
 .container {
