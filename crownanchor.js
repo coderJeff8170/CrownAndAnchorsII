@@ -8,6 +8,19 @@ let betArray = [];
 let betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
 
 
+//resets all input values to 0
+function wagerDefault() {
+    let x = document.getElementsByClassName("wager");
+    for(i=0; i<x.length; i++)
+    x[i].value = "0";
+  }
+
+function updateCoins() {
+    let x = document.getElementById("coins");
+    x.innerHTML = `Coins: ${purseCoins}`;
+}
+updateCoins();
+//
 function placeBet() {
         betObject.heart = document.getElementById('heart').valueAsNumber;
         betObject.crown = document.getElementById('crown').valueAsNumber;
@@ -17,9 +30,16 @@ function placeBet() {
         betObject.club = document.getElementById('club').valueAsNumber;
         betArray = Object.values(betObject);
 
+        //if player enters a negative bet value, 
         for(i=0; i<betArray.length; i++) {
             if(betArray[i]<0){
-                betArray[i] = 0;
+                alert(`Negative Bet Invalid!
+                Please try again!`);
+
+                wagerDefault();
+
+                return;
+                //betArray[i] = 0;
             }
         }
 
@@ -30,22 +50,26 @@ function placeBet() {
         let currentWager = betArray.reduce((a, x) => a += x);
         //subtract current wager from the purse
         purseCoins = purseCoins - currentWager;
-        //if current wager is more than whats in the purse, prevent.
-        //suggest preventing increment values if the purse is empty, in real time...
+        console.log(purseCoins);
+
         if(purseCoins < 0) {
-            //alert(`you don't have enough coins to place this bet!`);
-            console.log(`${purseCoins} <should be less than 0`);
+
+            alert(`you don't have enough coins to place this bet!
+            Please try again!`);
+            
             purseCoins = purseCoins + currentWager;
-            console.log(`${purseCoins} <should be back to 50`);
+            
+            wagerDefault();
+              
             return;
-        //if current wager empties purse, let them know the purse is empty.
-         }/*else if(purseCoins=0) {
+         } 
+         /*else if(purseCoins=0) {
             alert(`your purse is empty!`);
         }else{
             alert(`you now have ${purseCoins} coins in your purse`);
         } */
-
-        }
+        updateCoins();
+}
         
 
 //if there's a bet placed on a square, and that square corresponds with any of the die, multiply the number of die
@@ -67,4 +91,5 @@ function rollDie() {
     console.log(`you now have ${purseCoins} coins in your purse!`);
     document.getElementsByClassName("wager").value = "0";
     console.log(betArray);
+    updateCoins();
 }
