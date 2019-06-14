@@ -3,7 +3,7 @@
 //start with 50 coins;
 let purseCoins = 50;
 const dieArray = ['heartdie.png','crowndie.png','diamonddie.png','spadedie.png','anchordie.png','clubdie.png'];
-let rollArray = [];
+//let rollArray = [];
 let betArray = [];
 let betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
 
@@ -19,6 +19,14 @@ function updateCoins() {
     let x = document.getElementById("coins");
     x.innerHTML = `Coins: ${purseCoins}`;
 }
+
+function resetValues() {
+    betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
+    //betArray = [0, 0, 0, 0, 0, 0];
+    wagerDefault();
+    updateCoins();
+}
+
 updateCoins();
 //
 function placeBet() {
@@ -35,11 +43,8 @@ function placeBet() {
             if(betArray[i]<0){
                 alert(`Negative Bet Invalid!
                 Please try again!`);
-
                 wagerDefault();
-
                 return;
-                //betArray[i] = 0;
             }
         }
 
@@ -53,14 +58,10 @@ function placeBet() {
         console.log(purseCoins);
 
         if(purseCoins < 0) {
-
             alert(`you don't have enough coins to place this bet!
             Please try again!`);
-            
             purseCoins = purseCoins + currentWager;
-            
             wagerDefault();
-              
             return;
          } 
          /*else if(purseCoins=0) {
@@ -86,10 +87,11 @@ function rollDie() {
                 }
         }
     }
-    console.log(`you won ${roundPoints} points this round`);
+    //console.log(`you won ${roundPoints} points this round`);
     purseCoins = purseCoins + roundPoints;
-    console.log(`you now have ${purseCoins} coins in your purse!`);
+    //console.log(`you now have ${purseCoins} coins in your purse!`);
     document.getElementsByClassName("wager").value = "0";
-    console.log(betArray);
-    updateCoins();
+    //console.log(betArray);
+    resetValues();
+    betArray=[];
 }
