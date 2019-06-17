@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crown &amp; Anchors</title>
     <link rel="stylesheet" href="crownanchor.css">
+    <link href="https://fonts.googleapis.com/css?family=Rye&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="gameStart()">
     <header>
-        <h2 id='playerName'>Name:</h2>
+        <h2 id='round'></h2>
         <h1 class='titleText'>Crown &amp; Anchors</h1>
-        <h2 id='coins'>Coins:</h2>
+        <h2 id='coins'></h2>
     </header>
 
     <div class="container">
@@ -41,7 +42,7 @@
             </div>
         </div>
         <div class="bet">
-                <button onclick="placeBet()">Place Bet!</button>
+                <button id="betButton" onclick="placeBet()">Place Bet!</button>
         </div>
         <div class="dice">
             <img class="die" id="die1" src="assets/crowndie.png">
@@ -49,12 +50,12 @@
             <img class="die" id="die3" src="assets/crowndie.png">
         </div>
         <div class="roll">
-            <button onclick="rollDie()">Roll the Dice!</button>
+            <button id="rollButton" onclick="rollDie()">Roll the Dice!</button>
         </div>
     </div>
-    <audio src="the-sailors-hornpipe.mp3" controls loop="true" autoplay="true">
+    <!--<audio src="the-sailors-hornpipe.mp3" controls loop="true" autoplay="true">
             Error: your web browser does not support this audio player.
-    </audio>
+    </audio>-->
     <script src="crownanchor.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ header {
     min-width: 730px;
 }
 
-#playerName {
+#round {
     padding: 0 30 0 30;
     text-align: left;
     display: inline;
@@ -20,9 +20,10 @@ header {
 
 .titleText {
     padding: 0 30 0 30;
-    font: bold 48px Arial, Helvetica, sans-serif;
+    /*font: bold 48px Arial, Helvetica, sans-serif;*/
+    font-family: 'Rye', cursive;
     text-align: center;
-
+    font-size: 3rem;
     display: inline;
 }
 
@@ -48,6 +49,7 @@ header {
 
 input[type="number"] {
     border: none;
+    border-radius: 15px;
     margin: 5px;
     width: 100px;
     text-align: center;
