@@ -1,8 +1,4 @@
-//this isn't going to be very DRY... baby steps, write it first, revise it later
-
 // to do:
-
-
 
 // make bet status and round viewable
 // win if coins are over 150, loss if they reach zero
@@ -10,14 +6,16 @@
 // title page
 
 //setup
-wagerDefault();
-disableClick("rollButton");
 let purseCoins = 50;
 const dieArray = ['heartdie.png','crowndie.png','diamonddie.png','spadedie.png','anchordie.png','clubdie.png'];
 let betArray = [];
 let betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
 let hornpipe;
 let round = 1;
+wagerDefault();
+disableClick("rollButton");
+updateRound();
+updateCoins();
 
 //start sound on page load
 function gameStart(){
@@ -49,21 +47,18 @@ class Sound {
 function disableClick (elementId) {
     let x = document.getElementById(elementId);
     x.disabled = true;
-    }
-
+}
 //enable click
 function enableClick (elementId) {
     let x = document.getElementById(elementId);
     x.disabled = false;
-    }
-
-
+}
 //resets all input values to 0
 function wagerDefault() {
     let x = document.getElementsByClassName("wager");
     for(i=0; i<x.length; i++)
     x[i].value = "0";
-  }
+}
 //updates html value for coins
 function updateCoins() {
     let x = document.getElementById("coins");
@@ -74,7 +69,6 @@ function updateRound() {
     let x = document.getElementById("round");
     x.innerHTML = `Round ${round++}`;
 }
-
 function resetValues() {
     betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
     //betArray = [0, 0, 0, 0, 0, 0];
@@ -82,9 +76,7 @@ function resetValues() {
     updateCoins();
 }
 
-updateRound();
-updateCoins();
-//
+
 function placeBet() {
         betObject.heart = document.getElementById('heart').valueAsNumber;
         betObject.crown = document.getElementById('crown').valueAsNumber;
