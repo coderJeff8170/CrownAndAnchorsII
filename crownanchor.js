@@ -3,9 +3,10 @@
 // add rules
 // make bet status and round viewable or at least
 // alert matches..
+// above 150 doesn't appear to do anything
 
 // title page
-
+//something about location.reload(); that will play song on chrome, when gameStart() doesn't....
 //setup
 let purseCoins = 50;
 const dieArray = ['heartdie.png','crowndie.png','diamonddie.png','spadedie.png','anchordie.png','clubdie.png'];
@@ -14,7 +15,7 @@ let betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
 let hornpipe;
 let round = 1;
 wagerDefault();
-disableClick("rollButton");
+
 updateRound();
 updateCoins();
 
@@ -47,11 +48,18 @@ class Sound {
 function disableClick (elementId) {
     let x = document.getElementById(elementId);
     x.disabled = true;
+    x.style.backgroundColor = "white";
 }
+//show rules
+function showRules() {
+    alert('Ahoy matey! Crown & Anchors is a simple gambling game popular with the Royal Navy in the days of the wooden sailing ships. In order to win coins, you wager amounts in the input fields next to a face (crown, spade, heart, etc). When you roll the dice, if any of the them correspond to the square on the mat, you win the amount you wagered. You start with 50 coins, and you can bet any amount in any of the input fields next to the faces, up to the total amount of coins you have left. You keep going until you reach 150 coins and win, or run out of coins. Good luck, Sailor!');
+}
+
 //enable click
 function enableClick (elementId) {
     let x = document.getElementById(elementId);
     x.disabled = false;
+    x.style.backgroundColor = "red";
 }
 //resets all input values to 0
 function wagerDefault() {
@@ -66,8 +74,26 @@ function updateCoins() {
 }
 //updates round!
 function updateRound() {
+
     let x = document.getElementById("round");
     x.innerHTML = `Round ${round++}`;
+
+    disableClick("betButton");
+    disableClick("rollButton");
+
+    //enable bet once bet values have been entered
+    let betInput = document.getElementsByClassName("wager");
+
+    //must use a for loop, as gEBCN returns an array....
+    for(i=0; i<betInput.length; i++) {
+    betInput[i].addEventListener("keyup", function(event) {
+    if (event.keyCode > 48 && event.keyCode <= 57) {
+        enableClick("betButton");
+            }
+        });
+    }
+//add event listener
+//enable placeBet once values have been entered
 }
 //resets values for end of each round.
 function resetValues() {
@@ -88,6 +114,10 @@ function youLose() {
     alert (win);
     location.reload();
   }
+
+
+
+
 //bet function
 function placeBet() {
     betObject.heart = document.getElementById('heart').valueAsNumber;
@@ -142,7 +172,7 @@ function rollDie() {
     let roundPoints = 0;
     for(i=1; i<4; i++){
         let roll = (Math.floor(Math.random() * 6));
-        document.getElementById(`die${[i]}`).src = `assets/${dieArray[roll]}`;
+        document.getElementById(`die${[i]}`).src = `caassets/${dieArray[roll]}`;
         for(b=0; b<betArray.length; b++) {
             if(betArray[b]>0 && b === roll) {
                 roundPoints = roundPoints + betArray[b];
@@ -164,14 +194,14 @@ function rollDie() {
     //win/loss/continue
     if(purseCoins === 0) {
         youLose();
-    }else if(purseCoins === 150) {
+    }else if(purseCoins > 150) {
         youWin();
     }else{
         resetValues();
         betArray=[];
         updateRound();
         disableClick("rollButton");
-        enableClick("betButton");
+        //enableClick("betButton");
     }
     }, 1*1000);
 

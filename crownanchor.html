@@ -9,6 +9,7 @@
 </head>
 <body onload="gameStart()">
     <header>
+        <button id="ruleButton" onclick="showRules()">Rules</button>
         <h2 id='round'></h2>
         <h1 class='titleText'>Crown &amp; Anchors</h1>
         <h2 id='coins'></h2>
@@ -18,26 +19,26 @@
         <div class="mat">
             <div class="square">
                 <input class="wager" id="heart" type='number' value="0">
-                <img class="face" src="assets/heart.gif">
+                <img class="face" src="caassets/heart.gif">
             </div>
             <div class="square">
                     <input class="wager"  id="crown" type='number' value="0">
-                    <img class="face" src="assets/crown.gif">
+                    <img class="face" src="caassets/crown.gif">
             </div>
             <div class="square">
                     <input class="wager" id="diamond" type='number' value="0">
-                    <img class="face" src="assets/diamond.gif">
+                    <img class="face" src="caassets/diamond.gif">
             </div>
             <div class="square">
-                    <img class="face" src="assets/spade.gif">
+                    <img class="face" src="caassets/spade.gif">
                     <input class="wager" id="spade" type='number' value="0">
             </div>
             <div class="square">
-                    <img class="face" src="assets/anchor.gif">
+                    <img class="face" src="caassets/anchor.gif">
                     <input class="wager" id="anchor" type='number' value="0">
             </div>
             <div class="square">
-                    <img class="face" src="assets/club.gif">
+                    <img class="face" src="caassets/club.gif">
                     <input class="wager" id="club" type='number' value="0">
             </div>
         </div>
@@ -45,9 +46,9 @@
                 <button id="betButton" onclick="placeBet()">Place Bet!</button>
         </div>
         <div class="dice">
-            <img class="die" id="die1" src="assets/crowndie.png">
-            <img class="die" id="die2" src="assets/crowndie.png">
-            <img class="die" id="die3" src="assets/crowndie.png">
+            <img class="die" id="die1" src="caassets/crowndie.png">
+            <img class="die" id="die2" src="caassets/crowndie.png">
+            <img class="die" id="die3" src="caassets/crowndie.png">
         </div>
         <div class="roll">
             <button id="rollButton" onclick="rollDie()">Roll the Dice!</button>
