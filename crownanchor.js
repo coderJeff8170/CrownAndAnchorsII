@@ -9,6 +9,9 @@
 //something about location.reload(); that will play song on chrome, when gameStart() doesn't....
 //setup
 let purseCoins = 50;
+const titleScreen = document.getElementById("titleScreen");
+const gameContainer = document.getElementById("gameContainer");
+
 const dieArray = ['heartdie.png','crowndie.png','diamonddie.png','spadedie.png','anchordie.png','clubdie.png'];
 let betArray = [];
 let betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
@@ -18,15 +21,6 @@ wagerDefault();
 
 updateRound();
 updateCoins();
-
-//start sound on page load
-function gameStart(){
-    hornpipe = new Sound('the-sailors-hornpipe.mp3');
-    hornpipe.play();
-    //unhide game elements and hide title screen
-    //new branch to experiment with gamestates..
-
-}
 
 //sound class
 class Sound {
@@ -46,6 +40,23 @@ class Sound {
         };
     }
 }
+
+//start sound on page load
+function musicStart(){
+    hornpipe = new Sound('the-sailors-hornpipe.mp3');
+    hornpipe.play();
+    //unhide game elements and hide title screen
+    //new branch to experiment with gamestates..
+
+}
+
+function startGame() {
+    titleScreen.style.display = "none";
+    gameContainer.style.display = "block";
+    hornpipe.stop();
+}
+
+
 
 //disable click
 function disableClick (elementId) {
