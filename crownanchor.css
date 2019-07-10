@@ -92,6 +92,24 @@ button {
     left: 0;
 }
 
+#historyButton {
+    border: 1px solid black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(253, 240, 216);
+    border-radius: 5px;
+    font-size: 24px;
+    padding: 5px;
+    margin: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+a:visited {
+    color: black;
+}
+
 button:hover {
     background-color: gray;
 }

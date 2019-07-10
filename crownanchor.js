@@ -23,6 +23,9 @@ updateCoins();
 function gameStart(){
     hornpipe = new Sound('the-sailors-hornpipe.mp3');
     hornpipe.play();
+    //unhide game elements and hide title screen
+    //new branch to experiment with gamestates..
+
 }
 
 //sound class
@@ -92,9 +95,9 @@ function updateRound() {
             }
         });
     }
-//add event listener
-//enable placeBet once values have been entered
+
 }
+
 //resets values for end of each round.
 function resetValues() {
     betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
