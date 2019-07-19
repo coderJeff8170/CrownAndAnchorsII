@@ -1,12 +1,10 @@
 // to do:
 // sounds
-// add rules
 // make bet status and round viewable or at least
 // alert matches..
-// above 150 doesn't appear to do anything
 
-// title page
 //something about location.reload(); that will play song on chrome, when gameStart() doesn't....
+
 //setup
 let purseCoins = 50;
 const titleScreen = document.getElementById("titleScreen");
@@ -18,7 +16,6 @@ let betObject = {heart: 0, crown: 0, diamond: 0, spade: 0, anchor: 0, club: 0};
 let hornpipe;
 let round = 1;
 wagerDefault();
-
 updateRound();
 updateCoins();
 
@@ -208,7 +205,7 @@ function rollDie() {
     //win/loss/continue
     if(purseCoins === 0) {
         youLose();
-    }else if(purseCoins > 150) {
+    }else if(purseCoins >= 150) {
         youWin();
     }else{
         resetValues();
